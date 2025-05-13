@@ -3,7 +3,7 @@
   "module": "src/index.ts",
   "type": "module",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "bun build src/index.ts --outdir dist --watch",
     "prepublishOnly": "npm run build",
