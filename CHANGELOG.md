@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/wowjob/util/compare/v1.0.1...v1.0.2) (2025-05-13)
+
+
+### Bug Fixes
+
+* add publishConfig with access set to public ([4a27938](https://github.com/wowjob/util/commit/4a27938702650cba31172ea5ad437fc21aa06e97))
+
 ## [1.0.1](https://github.com/wowjob/util/compare/v1.0.0...v1.0.1) (2025-05-13)
 
 
