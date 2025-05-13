@@ -1,0 +1,35 @@
+{
+  "name": "@wowjob/util",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun build src/index.ts --outdir dist --watch",
+    "prepublishOnly": "npm run build",
+    "sr": "bunx semantic-release",
+    "pub": "bunx semantic-release --no-ci",
+    "build": "tsup --config tsup.config.ts"
+  },
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/bun": "latest",
+    "semantic-release": "^24.2.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.4",
+    "@wowjob/ui": "latest",
+    "next": "^15.3.1",
+    "tsup": "^8.4.0"
+  }
+}

@@ -1,0 +1,1 @@
+export { isAdminEmail } from './admin'
