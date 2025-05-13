@@ -3,6 +3,9 @@
   "module": "src/index.ts",
   "type": "module",
   "version": "1.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wowjob/util.git"
