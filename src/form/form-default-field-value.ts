@@ -7,28 +7,9 @@ export function setFormDefaultFieldValue<T extends Record<string, unknown>>(
   if (defaultValueMap) {
     const fs = structuredClone(formDataStructure)
 
-    const dataMap = fs.data as Record<
-      string,
-      {
-        defaultValue?: string | number | readonly string[] | undefined | boolean
-      }
-    >
-
-    for (const key of Object.keys(defaultValueMap) as string[]) {
-      if (key in dataMap) {
-        const value = defaultValueMap[key]
-        if (
-          value === null ||
-          (typeof value !== 'string' &&
-            typeof value !== 'number' &&
-            !(
-              Array.isArray(value) &&
-              value.every((item) => typeof item === 'string')
-            ))
-        ) {
-          continue
-        }
-        dataMap[key].defaultValue = value as string | number | readonly string[]
+    for (const key of fs.list) {
+      if (key in fs.data) {
+        fs.data[key].defaultValue = defaultValueMap[key]
       }
     }
 
