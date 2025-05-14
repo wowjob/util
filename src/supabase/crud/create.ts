@@ -21,7 +21,7 @@ export const dbCreate = async <T>({
   const { id, ...rest } = data as any
 
   try {
-    const { error } = await supabase.from(table).insert(rest).select()
+    const { error, data } = await supabase.from(table).insert(rest).select()
 
     if (error) {
       logDev({ log: [error, id], name: `dbCreate error db for ${table}` })
@@ -32,6 +32,8 @@ export const dbCreate = async <T>({
         theme: 'error' as TStyle['theme'],
       }
     }
+
+    logDev({ log: data, name: `createItem success for ${table}` })
 
     return {
       redirect: `/${table}`,
