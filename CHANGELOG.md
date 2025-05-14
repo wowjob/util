@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/wowjob/util/compare/v1.0.2...v1.0.3) (2025-05-14)
+
+
+### Bug Fixes
+
+* test build locally ([7e1670b](https://github.com/wowjob/util/commit/7e1670b28320a4f5d538c148ba3458afe2f7a9cc))
+
 ## [1.0.2](https://github.com/wowjob/util/compare/v1.0.1...v1.0.2) (2025-05-13)
 
 
