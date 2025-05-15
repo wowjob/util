@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/wowjob/util/compare/v1.0.4...v1.1.0) (2025-05-15)
+
+
+### Features
+
+* implement rpc call util ([fbf563f](https://github.com/wowjob/util/commit/fbf563f1766d2cb2080f894712f0591356a50687))
+
 ## [1.0.4](https://github.com/wowjob/util/compare/v1.0.3...v1.0.4) (2025-05-15)
 
 
