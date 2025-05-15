@@ -3,19 +3,23 @@
   "module": "src/index.ts",
   "type": "module",
   "version": "1.1.1",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wowjob/util.git"
-  },
   "scripts": {
     "dev": "bun build src/index.ts --outdir dist --watch",
     "prepublishOnly": "npm run build",
     "sr": "bunx semantic-release",
     "pub": "bunx semantic-release --no-ci",
-    "build": "tsup --config tsup.config.ts"
+    "build-type": "tsc --project tsconfig.dts.json",
+    "build": "tsup --config tsup.config.ts && bun run build-type"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wowjob/util.git"
   },
   "types": "./dist/index.d.ts",
   "exports": {

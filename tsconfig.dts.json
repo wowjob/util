@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "composite": false,
+    "outDir": "dist",
+    "noEmit": false,
+    "lib": ["ESNext", "DOM"], // ✅ Add "DOM" to support `e.target.value`
+    "types": ["bun"], // Use Bun's types explicitly
+    "skipLibCheck": true // Ignore type conflicts in dependencies
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "src/css/css/ui.ts"]
+}

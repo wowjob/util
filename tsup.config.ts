@@ -1,11 +1,14 @@
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  entry: ['src/index.ts'],
-  outDir: 'dist',
+  entry: ['src/**/*'],
   format: ['esm'],
-  dts: true,
-  splitting: false,
+  outDir: 'dist',
+  dts: false,
   sourcemap: true,
+  external: ['react', 'react-dom', '@tanstack/react-router', 'next'],
+  tsconfig: 'tsconfig.json',
   clean: true,
+  bundle: false,
+  minify: false,
 })
