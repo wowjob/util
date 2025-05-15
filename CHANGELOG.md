@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/wowjob/util/compare/v1.1.0...v1.1.1) (2025-05-15)
+
+
+### Bug Fixes
+
+* fixed version for @wowjob/ui ([da1acb2](https://github.com/wowjob/util/commit/da1acb21d27bf00e63ec42cf0c2a7cd2aaf9bbe3))
+
 # [1.1.0](https://github.com/wowjob/util/compare/v1.0.4...v1.1.0) (2025-05-15)
 
 
