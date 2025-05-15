@@ -3,20 +3,27 @@ import type { TStyle } from '@wowjob/ui'
 import { logDev } from '../../log'
 import { supabaseServer } from 'supabase/server'
 import type { GenericSchema } from '@supabase/supabase-js/dist/module/lib/types'
+import { supabaseServiceRole } from 'supabase/service'
+import type { TDBProcess } from '../../type'
 
 export const dbRemove = async ({
   table,
   id,
+  dbProcess = 'server',
 }: {
   table: string
   id: number
+  dbProcess?: TDBProcess
 }): Promise<{
   message: string | string[]
   title: string
   theme: TStyle['theme']
   redirect?: string
 }> => {
-  const supabase = await supabaseServer<GenericSchema>()
+  const supabase =
+    dbProcess === 'build'
+      ? await supabaseServiceRole<GenericSchema>()
+      : await supabaseServer<GenericSchema>()
 
   try {
     const { error } = await supabase.from(table).delete().eq('id', id)

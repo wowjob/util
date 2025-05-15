@@ -3,20 +3,27 @@ import type { TStyle } from '@wowjob/ui'
 import { logDev } from 'log'
 import { supabaseServer } from 'supabase/server'
 import type { GenericSchema } from '@supabase/supabase-js/dist/module/lib/types'
+import { supabaseServiceRole } from 'supabase/service'
+import type { TDBProcess } from '../../type'
 
 export const dbList = async <T>({
   table,
   limit = 6,
+  dbProcess = 'server',
 }: {
   table: string
   limit?: number
+  dbProcess?: TDBProcess
 }): Promise<{
   data?: T[]
   message: string | string[]
   title: string
   theme: TStyle['theme']
 }> => {
-  const supabase = await supabaseServer<GenericSchema>()
+  const supabase =
+    dbProcess === 'build'
+      ? await supabaseServiceRole<GenericSchema>()
+      : await supabaseServer<GenericSchema>()
 
   try {
     let query = supabase.from(table).select('*')

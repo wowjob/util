@@ -1,4 +1,4 @@
-// update.ts
+// upsert.ts
 import type { TStyle } from '@wowjob/ui'
 import { logDev } from '../../log'
 import { supabaseServer } from 'supabase/server'
@@ -6,14 +6,16 @@ import type { GenericSchema } from '@supabase/supabase-js/dist/module/lib/types'
 import { supabaseServiceRole } from 'supabase/service'
 import type { TDBProcess } from '../../type'
 
-export const dbUpdate = async <T>({
+export const dbUpsertByKey = async <T>({
   table,
-  id,
+  key,
+  value,
   data,
   dbProcess = 'server',
 }: {
   table: string
-  id: number
+  key: string
+  value: string | number
   data: T
   dbProcess?: TDBProcess
 }): Promise<{
@@ -28,32 +30,41 @@ export const dbUpdate = async <T>({
       : await supabaseServer<GenericSchema>()
 
   try {
-    const { data: updated, error } = await supabase
+    // merge the lookup key/value into the payload,
+    // so .upsert knows which column to conflict on
+    const payload = { ...data, [key]: value }
+
+    const { data: out, error } = await supabase
       .from(table)
-      .update(data)
-      .eq('id', id)
+      .upsert(payload, { onConflict: key })
       .select()
+      .single()
 
     if (error) {
-      logDev({ log: error, name: `dbUpdate error db for ${table}` })
+      logDev({ log: error, name: `dbUpsertByKey error for ${table}` })
       return {
-        message: [`Failed to update ${table}#${id}`, error.message],
+        message: [
+          `Failed to upsert into ${table} by ${key}=${value}`,
+          error.message,
+        ],
         title: 'Error',
         theme: 'error',
       }
     }
 
     return {
-      data: updated as T,
-      message: `${table}#${id} updated successfully.`,
+      data: out as T,
+      message: `Upserted ${table}.${key}=${value} successfully.`,
       title: 'Success',
       theme: 'success',
     }
   } catch (err: any) {
-    logDev({ log: err, name: `dbUpdate exception for ${table}` })
-
+    logDev({ log: err, name: `dbUpsertByKey exception for ${table}` })
     return {
-      message: [`An exception occurred updating ${table}#${id}`, err.message],
+      message: [
+        `An exception occurred upserting into ${table} by ${key}=${value}`,
+        err.message,
+      ],
       title: 'Error',
       theme: 'error',
     }
