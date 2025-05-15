@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/wowjob/util/compare/v1.0.3...v1.0.4) (2025-05-15)
+
+
+### Bug Fixes
+
+* better logic of database process selector ([1c16ef5](https://github.com/wowjob/util/commit/1c16ef598b350b5caa25ba40ed74cff47b3d38e6))
+
 ## [1.0.3](https://github.com/wowjob/util/compare/v1.0.2...v1.0.3) (2025-05-14)
 
 
