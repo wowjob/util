@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/wowjob/util/compare/v1.1.1...v1.1.2) (2025-05-15)
+
+
+### Bug Fixes
+
+* update build config ([34bc8cf](https://github.com/wowjob/util/commit/34bc8cfd8fb871e0838105587548160bde0b11b9))
+
 ## [1.1.1](https://github.com/wowjob/util/compare/v1.1.0...v1.1.1) (2025-05-15)
 
 
