@@ -3,6 +3,7 @@ export {
   dbList,
   dbGet,
   dbRemove,
+  dbRpc,
   dbUpdate,
   dbUpsertByKey,
 } from './crud'

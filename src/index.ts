@@ -7,7 +7,9 @@ export {
   dbList,
   dbGet,
   dbRemove,
+  dbRpc,
   dbUpdate,
+  dbUpsertByKey,
   // function
   dbContentFeed,
   // supabase
