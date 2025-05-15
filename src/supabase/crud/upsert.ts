@@ -1,10 +1,10 @@
 // upsert.ts
 import type { TStyle } from '@wowjob/ui'
 import { logDev } from '../../log'
-import { supabaseServer } from 'supabase/server'
 import type { GenericSchema } from '@supabase/supabase-js/dist/module/lib/types'
-import { supabaseServiceRole } from 'supabase/service'
 import type { TDBProcess } from '../../type'
+import { supabaseServiceRole } from '../service'
+import { supabaseServer } from '../server'
 
 export const dbUpsertByKey = async <T>({
   table,

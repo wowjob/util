@@ -1,10 +1,10 @@
 // rpc.ts
 import type { TStyle } from '@wowjob/ui'
-import { supabaseServer } from 'supabase/server'
 import type { GenericSchema } from '@supabase/supabase-js/dist/module/lib/types'
-import { supabaseServiceRole } from 'supabase/service'
 import type { TDBProcess } from '../../type'
-import { logDev } from 'log'
+import { logDev } from '../../log'
+import { supabaseServiceRole } from '../service'
+import { supabaseServer } from '../server'
 
 export type TRpcResult<T> = {
   data?: T
