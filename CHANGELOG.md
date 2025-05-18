@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/wowjob/util/compare/v1.2.0...v1.3.0) (2025-05-18)
+
+
+### Features
+
+* update return data type for get ([ee6598d](https://github.com/wowjob/util/commit/ee6598de3a2208ffd68a91ec7c2c240ce8cc48cf))
+
 # [1.2.0](https://github.com/wowjob/util/compare/v1.1.3...v1.2.0) (2025-05-18)
 
 
