@@ -58,3 +58,63 @@ export const dbGet = async <T>({
     }
   }
 }
+
+export const dbGetBy = async <T>({
+  table,
+  filters,
+  dbProcess = 'server',
+}: {
+  table: string
+  filters: Record<string, string | number>
+  dbProcess?: TDBProcess
+}): Promise<{
+  data?: T
+  message: string | string[]
+  title: string
+  theme: TStyle['theme']
+}> => {
+  const supabase =
+    dbProcess === 'build'
+      ? await supabaseServiceRole<GenericSchema>()
+      : await supabaseServer<GenericSchema>()
+
+  try {
+    let query = supabase.from(table).select('*')
+    Object.entries(filters).forEach(([key, value]) => {
+      query = query.eq(key, value)
+    })
+
+    const { data, error } = await query.single()
+
+    if (error) {
+      logDev({ log: error, name: `dbGetBy error db for ${table}` })
+
+      return {
+        message: [
+          `Failed to fetch ${table} by ${JSON.stringify(filters)}`,
+          error.message,
+        ],
+        title: 'Error',
+        theme: 'error',
+      }
+    }
+
+    return {
+      data: data as T,
+      message: `${table} fetched successfully by ${JSON.stringify(filters)}.`,
+      title: 'Success',
+      theme: 'success',
+    }
+  } catch (err: any) {
+    logDev({ log: err, name: `dbGetBy exception for ${table}` })
+
+    return {
+      message: [
+        `An exception occurred fetching ${table} by ${JSON.stringify(filters)}`,
+        err.message,
+      ],
+      title: 'Error',
+      theme: 'error',
+    }
+  }
+}

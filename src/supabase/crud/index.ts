@@ -1,6 +1,6 @@
 export { dbCreate } from './create'
 export { dbList } from './list'
-export { dbGet } from './get'
+export { dbGet, dbGetBy } from './get'
 export { dbRemove } from './remove'
 export { dbRpc } from './rpc'
 export { dbUpdate } from './update'

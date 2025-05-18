@@ -2,6 +2,7 @@ export {
   dbCreate,
   dbList,
   dbGet,
+  dbGetBy,
   dbRemove,
   dbRpc,
   dbUpdate,
