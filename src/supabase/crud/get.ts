@@ -61,14 +61,16 @@ export const dbGet = async <T>({
 
 export const dbGetBy = async <T>({
   table,
-  filters,
+  filterMap,
   dbProcess = 'server',
+  multiple = false,
 }: {
   table: string
-  filters: Record<string, string | number>
+  filterMap: Record<string, string | number>
   dbProcess?: TDBProcess
+  multiple?: boolean
 }): Promise<{
-  data?: T
+  data?: T | T[]
   message: string | string[]
   title: string
   theme: TStyle['theme']
@@ -80,18 +82,18 @@ export const dbGetBy = async <T>({
 
   try {
     let query = supabase.from(table).select('*')
-    Object.entries(filters).forEach(([key, value]) => {
+    Object.entries(filterMap).forEach(([key, value]) => {
       query = query.eq(key, value)
     })
 
-    const { data, error } = await query.single()
+    const { data, error } = multiple ? await query : await query.single()
 
     if (error) {
       logDev({ log: error, name: `dbGetBy error db for ${table}` })
 
       return {
         message: [
-          `Failed to fetch ${table} by ${JSON.stringify(filters)}`,
+          `Failed to fetch ${table} by ${JSON.stringify(filterMap)}`,
           error.message,
         ],
         title: 'Error',
@@ -100,8 +102,8 @@ export const dbGetBy = async <T>({
     }
 
     return {
-      data: data as T,
-      message: `${table} fetched successfully by ${JSON.stringify(filters)}.`,
+      data: multiple ? (data as T[]) : (data as T),
+      message: `${table} fetched successfully by ${JSON.stringify(filterMap)}.`,
       title: 'Success',
       theme: 'success',
     }
@@ -110,7 +112,9 @@ export const dbGetBy = async <T>({
 
     return {
       message: [
-        `An exception occurred fetching ${table} by ${JSON.stringify(filters)}`,
+        `An exception occurred fetching ${table} by ${JSON.stringify(
+          filterMap
+        )}`,
         err.message,
       ],
       title: 'Error',

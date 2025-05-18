@@ -12,7 +12,7 @@ export const dbRemove = async ({
   dbProcess = 'server',
 }: {
   table: string
-  id: number
+  id: number | string
   dbProcess?: TDBProcess
 }): Promise<{
   message: string | string[]

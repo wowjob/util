@@ -13,7 +13,7 @@ export const dbUpdate = async <T>({
   dbProcess = 'server',
 }: {
   table: string
-  id: number
+  id: number | string
   data: T
   dbProcess?: TDBProcess
 }): Promise<{

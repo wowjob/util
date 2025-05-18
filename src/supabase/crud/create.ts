@@ -19,6 +19,7 @@ export const dbCreate = async <T>({
   message: string | string[]
   title: string
   theme: TStyle['theme']
+  data?: T
 }> => {
   const supabase =
     dbProcess === 'build'
@@ -28,7 +29,11 @@ export const dbCreate = async <T>({
   const { id, ...rest } = data as any
 
   try {
-    const { error, data } = await supabase.from(table).insert(rest).select()
+    const { error, data } = await supabase
+      .from(table)
+      .insert(rest)
+      .select()
+      .single()
 
     if (error) {
       logDev({ log: [error, id], name: `dbCreate error db for ${table}` })
@@ -47,6 +52,7 @@ export const dbCreate = async <T>({
       message: `${table} created successfully!`,
       title: 'Success',
       theme: 'success' as TStyle['theme'],
+      data,
     }
   } catch (error) {
     logDev({ log: error, name: `createItem error for ${table}` })
