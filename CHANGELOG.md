@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/wowjob/util/compare/v1.1.3...v1.2.0) (2025-05-18)
+
+
+### Features
+
+* implement dbGetBy ([fb04cd1](https://github.com/wowjob/util/commit/fb04cd1a0ccd81565848fb7449717277cdb49fa2))
+
 ## [1.1.3](https://github.com/wowjob/util/compare/v1.1.2...v1.1.3) (2025-05-15)
 
 
