@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/wowjob/util/compare/v1.3.5...v1.4.0) (2025-05-22)
+
+
+### Features
+
+* implement custom field selector for more efficient returns and reduce data transfer ([fb769bd](https://github.com/wowjob/util/commit/fb769bdd3d365230b22a1484bb5838b7f4a65d8b))
+
 ## [1.3.5](https://github.com/wowjob/util/compare/v1.3.4...v1.3.5) (2025-05-22)
 
 
