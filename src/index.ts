@@ -15,6 +15,7 @@ export {
   dbContentFeed,
   // supabase
   supabaseUpdateSession,
+  supabaseServiceRole,
   supabaseServer,
 } from './supabase'
 
