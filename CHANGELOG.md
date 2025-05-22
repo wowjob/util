@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/wowjob/util/compare/v1.3.0...v1.3.1) (2025-05-22)
+
+
+### Bug Fixes
+
+* disable auto refhresh token ([fb84abe](https://github.com/wowjob/util/commit/fb84abec3efcc2c0b4d178d84c7d73c87ce38de8))
+
 # [1.3.0](https://github.com/wowjob/util/compare/v1.2.0...v1.3.0) (2025-05-18)
 
 
