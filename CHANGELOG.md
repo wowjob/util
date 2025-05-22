@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/wowjob/util/compare/v1.3.2...v1.3.3) (2025-05-22)
+
+
+### Bug Fixes
+
+* export server role util ([9b934c9](https://github.com/wowjob/util/commit/9b934c96133b3178f43608bd9e71b8930a27d081))
+
 ## [1.3.2](https://github.com/wowjob/util/compare/v1.3.1...v1.3.2) (2025-05-22)
 
 
