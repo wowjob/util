@@ -10,10 +10,12 @@ export const dbGet = async <T>({
   table,
   id,
   dbProcess = 'server',
+  select,
 }: {
   table: string
   id: number
   dbProcess?: TDBProcess
+  select?: string | string[]
 }): Promise<{
   data?: T
   message: string | string[]
@@ -25,10 +27,14 @@ export const dbGet = async <T>({
       ? await supabaseServiceRole<GenericSchema>()
       : await supabaseServer<GenericSchema>()
 
+  const tableFieldSelector = Array.isArray(select)
+    ? select.join(',')
+    : select || '*'
+
   try {
     const { data, error } = await supabase
       .from(table)
-      .select('*')
+      .select(tableFieldSelector)
       .eq('id', id)
       .single()
 
