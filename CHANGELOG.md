@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/wowjob/util/compare/v1.3.4...v1.3.5) (2025-05-22)
+
+
+### Bug Fixes
+
+* remove auth, no more providers, just email auth ([c16f2ce](https://github.com/wowjob/util/commit/c16f2ce82fae9304c335fa8c866d1b4213d1f0c4))
+
 ## [1.3.4](https://github.com/wowjob/util/compare/v1.3.3...v1.3.4) (2025-05-22)
 
 
