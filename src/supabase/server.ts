@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
-export const supabaseServer = async <T>() => {
+export const supabaseServer = async <T>(persistSession = false) => {
   const cookieStore = await cookies()
 
   return createServerClient<T>(
@@ -9,10 +9,10 @@ export const supabaseServer = async <T>() => {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() {
+        getAll: () => {
           return cookieStore.getAll()
         },
-        setAll(cookiesToSet) {
+        setAll: (cookiesToSet) => {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options)
@@ -25,6 +25,10 @@ export const supabaseServer = async <T>() => {
         },
       },
       cookieOptions: { domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN },
+      auth: {
+        autoRefreshToken: false,
+        persistSession,
+      },
     }
   )
 }
