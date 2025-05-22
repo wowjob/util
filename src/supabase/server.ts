@@ -25,6 +25,10 @@ export const supabaseServer = async <T>() => {
         },
       },
       cookieOptions: { domain: process.env.NEXT_PUBLIC_COOKIE_DOMAIN },
+      auth: {
+        autoRefreshToken: false,
+        persistSession: true,
+      },
     }
   )
 }
