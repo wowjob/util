@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/wowjob/util/compare/v1.3.1...v1.3.2) (2025-05-22)
+
+
+### Bug Fixes
+
+* persistSession false ([026dca7](https://github.com/wowjob/util/commit/026dca7fe976c8dc0a6e4ed76f35ff9fe93f196d))
+
 ## [1.3.1](https://github.com/wowjob/util/compare/v1.3.0...v1.3.1) (2025-05-22)
 
 
