@@ -1,3 +1,11 @@
+## [1.3.4](https://github.com/wowjob/util/compare/v1.3.3...v1.3.4) (2025-05-22)
+
+
+### Bug Fixes
+
+* remove auth in server util ([1e4b07a](https://github.com/wowjob/util/commit/1e4b07a2dcc3fbed16b52f45dd70e664eb282822))
+* toggle server persistance ([f716d9c](https://github.com/wowjob/util/commit/f716d9c1b3b4395338c1a985058c0e6a74c11ea1))
+
 ## [1.3.3](https://github.com/wowjob/util/compare/v1.3.2...v1.3.3) (2025-05-22)
 
 
