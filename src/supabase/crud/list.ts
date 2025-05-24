@@ -9,13 +9,15 @@ import { supabaseServer } from '../server'
 export const dbList = async <T>({
   table,
   limit = 6,
-  dbProcess = 'server',
   select,
+  dbProcess = 'server',
+  schema = 'public',
 }: {
   table: string
   limit?: number
   dbProcess?: TDBProcess
   select?: string | string[]
+  schema?: string
 }): Promise<{
   data?: T[]
   message: string | string[]
@@ -32,7 +34,10 @@ export const dbList = async <T>({
       ? select.join(',')
       : select || '*'
 
-    let query = supabase.from(table).select(tableFieldSelector)
+    let query = supabase
+      .from(`${schema}.${table}`)
+
+      .select(tableFieldSelector)
 
     if (limit) {
       query = query.limit(limit)

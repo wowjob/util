@@ -1,7 +1,10 @@
 // create.ts
 import type { TStyle } from '@wowjob/ui'
 import { logDev } from '../../log'
-import type { GenericSchema } from '@supabase/supabase-js/dist/module/lib/types'
+import type {
+  GenericSchema,
+  SupabaseClientOptions,
+} from '@supabase/supabase-js/dist/module/lib/types'
 import type { TDBProcess } from '../../type'
 import { supabaseServiceRole } from '../service'
 import { supabaseServer } from '../server'
@@ -10,9 +13,11 @@ export const dbCreate = async <T>({
   data,
   table,
   dbProcess = 'server',
+  schema = 'public',
 }: {
   table: string
   data: T
+  schema?: string
   dbProcess?: TDBProcess
 }): Promise<{
   redirect?: string
@@ -30,7 +35,7 @@ export const dbCreate = async <T>({
 
   try {
     const { error, data } = await supabase
-      .from(table)
+      .from(`${schema}.${table}`)
       .insert(rest)
       .select()
       .single()

@@ -10,8 +10,10 @@ export const dbRemove = async ({
   table,
   id,
   dbProcess = 'server',
+  schema = 'public',
 }: {
   table: string
+  schema?: string
   id: number | string
   dbProcess?: TDBProcess
 }): Promise<{
@@ -26,7 +28,10 @@ export const dbRemove = async ({
       : await supabaseServer<GenericSchema>()
 
   try {
-    const { error } = await supabase.from(table).delete().eq('id', id)
+    const { error } = await supabase
+      .from(`${schema}.${table}`)
+      .delete()
+      .eq('id', id)
 
     if (error) {
       logDev({ log: error, name: `dbRemove error db for ${table}` })

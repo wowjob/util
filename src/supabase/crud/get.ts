@@ -11,11 +11,13 @@ export const dbGet = async <T>({
   id,
   dbProcess = 'server',
   select,
+  schema = 'public',
 }: {
   table: string
   id: number
   dbProcess?: TDBProcess
   select?: string | string[]
+  schema?: string
 }): Promise<{
   data?: T
   message: string | string[]
@@ -33,7 +35,7 @@ export const dbGet = async <T>({
 
   try {
     const { data, error } = await supabase
-      .from(table)
+      .from(`${schema}.${table}`)
       .select(tableFieldSelector)
       .eq('id', id)
       .single()
