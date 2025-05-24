@@ -14,7 +14,7 @@ export const dbUpdate = async <T>({
   schema = 'public',
 }: {
   table: string
-  schema?: string
+  schema?: any
   id: number | string
   data: T
   dbProcess?: TDBProcess
@@ -31,7 +31,8 @@ export const dbUpdate = async <T>({
 
   try {
     const { data: updated, error } = await supabase
-      .from(`${schema}.${table}`)
+      .schema(schema)
+      .from(table)
       .update(data)
       .eq('id', id)
       .select()

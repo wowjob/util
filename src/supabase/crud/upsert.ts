@@ -16,7 +16,7 @@ export const dbUpsertByKey = async <T>({
 }: {
   table: string
   key: string
-  schema?: string
+  schema?: any
   value: string | number
   data: T
   dbProcess?: TDBProcess
@@ -37,7 +37,8 @@ export const dbUpsertByKey = async <T>({
     const payload = { ...data, [key]: value }
 
     const { data: out, error } = await supabase
-      .from(`${schema}.${table}`)
+      .schema(schema)
+      .from(table)
       .upsert(payload, { onConflict: key })
       .select()
       .single()

@@ -17,7 +17,7 @@ export const dbList = async <T>({
   limit?: number
   dbProcess?: TDBProcess
   select?: string | string[]
-  schema?: string
+  schema?: any
 }): Promise<{
   data?: T[]
   message: string | string[]
@@ -34,10 +34,7 @@ export const dbList = async <T>({
       ? select.join(',')
       : select || '*'
 
-    let query = supabase
-      .from(`${schema}.${table}`)
-
-      .select(tableFieldSelector)
+    let query = supabase.schema(schema).from(table).select(tableFieldSelector)
 
     if (limit) {
       query = query.limit(limit)

@@ -13,7 +13,7 @@ export const dbRemove = async ({
   schema = 'public',
 }: {
   table: string
-  schema?: string
+  schema?: any
   id: number | string
   dbProcess?: TDBProcess
 }): Promise<{
@@ -29,7 +29,8 @@ export const dbRemove = async ({
 
   try {
     const { error } = await supabase
-      .from(`${schema}.${table}`)
+      .schema(schema)
+      .from(table)
       .delete()
       .eq('id', id)
 
