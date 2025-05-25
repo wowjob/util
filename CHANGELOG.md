@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/wowjob/util/compare/v1.4.0...v1.5.0) (2025-05-25)
+
+
+### Bug Fixes
+
+* schema is no longer generated twice (public + custom), just custom ([3508303](https://github.com/wowjob/util/commit/350830354cc244993631b4582178044d92292723))
+
+
+### Features
+
+* introduce schem in db selector ([bfff3f8](https://github.com/wowjob/util/commit/bfff3f8693b227f196ee6b0479fdfc56d4d06115))
+
 # [1.4.0](https://github.com/wowjob/util/compare/v1.3.5...v1.4.0) (2025-05-22)
 
 
