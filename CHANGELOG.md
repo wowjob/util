@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/wowjob/util/compare/v1.5.0...v1.5.1) (2025-05-25)
+
+
+### Bug Fixes
+
+* default value field ([d969f2f](https://github.com/wowjob/util/commit/d969f2f2fa7019db0eb42b9fbb2deb81c803fb3e))
+
 # [1.5.0](https://github.com/wowjob/util/compare/v1.4.0...v1.5.0) (2025-05-25)
 
 
